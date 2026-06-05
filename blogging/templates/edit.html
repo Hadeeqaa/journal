@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Jua", sans-serif;
+            background-color: #fff5f0;
+            background-image: url("{% static 'wallpaper.webp' %}");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .wrap {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #d06fa0;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .edit-card {
+            background-image: url("{% static 'images/form-card.webp' %}");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            padding: 2rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            font-family: "Jua", sans-serif;
+            font-size: 15px;
+            border: 1.5px solid #f8c8dc;
+            border-radius: 8px 3px 10px 4px / 4px 10px 3px 8px;
+            outline: none;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-save {
+            background: #f0a0c0;
+            color: white;
+            border: none;
+            padding: 9px 22px;
+            font-family: "Jua", sans-serif;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .btn-save:hover {
+            background: #d06fa0;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #c090b0;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>edit entry ♡</h1>
+        <div class="edit-card">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="title" value="{{ form.title.value }}" />
+                <textarea name="body">{{ form.body.value }}</textarea>
+                <button type="submit" class="btn-save">Save ♡</button>
+            </form>
+        </div>
+        <a href="{% url 'home' %}" class="btn-back">← back to entries</a>
+    </div>
+</body>
+
+</html>
