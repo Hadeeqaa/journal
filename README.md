@@ -1,5 +1,5 @@
 # Journal
-a CRUD Based mechanism that lets anyone post thoughts and read history of posts 
+a CRUD Based mechanism that lets anyone post thoughts and read history of posts.
 
 
 ## Features
